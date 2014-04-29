@@ -1,6 +1,0 @@
-[ui]
-username = Zach Sommers <zachsommers@allionusa.com>
-verbose = true
-
-[extensions]
-prompt = /usr/local/etc/prompt.py
