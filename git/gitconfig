@@ -1,0 +1,14 @@
+[user]
+    name = Zach Sommers
+    email = zsommers@gmail.com
+[core]
+	excludesfile = /Users/zsommers/.gitignore_global
+	editor = vim
+	autocrlf = input
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+[color]
+	ui = true
