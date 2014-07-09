@@ -44,7 +44,7 @@ export PROJECT_HOME=$HOME/projects
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 source "/usr/local/bin/virtualenvwrapper.sh"
 
-if [[ -a "~/.zshrc.custom" ]]; then
+if [[ -e ~/.zshrc.custom ]]; then
     source ~/.zshrc.custom;
 fi
 
