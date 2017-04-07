@@ -1,6 +1,6 @@
 [user]
-    name = Zach Sommers
-    email = zsommers@gmail.com
+	name = Zach Sommers
+	email = zsommers@kickbackpoints.com
 [core]
 	excludesfile = /Users/zsommers/.gitignore_global
 	editor = vim
@@ -10,5 +10,19 @@
     ci = commit
     br = branch
     co = checkout
+    cot = checkout --track
 [color]
 	ui = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/zsommers/.stCommitMsg

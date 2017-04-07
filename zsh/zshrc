@@ -44,6 +44,11 @@ export PROJECT_HOME=$HOME/projects
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 source "/usr/local/bin/virtualenvwrapper.sh"
 
+py_clean () {
+    find . -name '__pycache__' | xargs rm -r
+    find . -name '*.pyc' | xargs rm -r
+}
+
 if [[ -e ~/.zshrc.custom ]]; then
     source ~/.zshrc.custom;
 fi
@@ -54,3 +59,8 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         exit;
     fi
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f /Users/zsommers/.travis/travis.sh ] && source /Users/zsommers/.travis/travis.sh

@@ -35,3 +35,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Sublime Files #
+#################
+*.sublime-workspace
+*.sublime-project
+
+# IPython Files #
+#################
+*.ipynb
+
