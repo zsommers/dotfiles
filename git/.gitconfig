@@ -1,0 +1,47 @@
+[user]
+    email = github@zachsommers.com
+    name = Zach Sommers
+    signingkey = C3B072A21A5F9A16
+
+[core]
+    excludesfile = /Users/zsommers/.gitignore_global
+
+[alias]
+    fp= fetch --prune
+    undo = reset --soft HEAD^
+    stash-all = stash save --include-untracked
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    st = status
+    ci = commit
+    co = checkout
+    cob = checkout -b
+    cot = checkout -t
+    br = branch
+    dt = difftool
+    dtc = difftool --cached
+
+[merge]
+    ff = only
+    conflictstyle = diff3
+
+[commit]
+    gpgSign = true
+
+[push]
+    default = simple
+    followTags = true
+
+[status]
+    showUntrackedFiles = all
+
+[transfer]
+    fsckobjects = true
+
+[diff]
+    tool = icdiff
+
+[difftool]
+    prompt = false
+
+[difftool "icdiff"]
+    cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
