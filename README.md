@@ -1,5 +1,5 @@
 # Dotfiles
-This is a collection of my configuration files. I owe @rlbaker a beer for all
+This is a collection of my configuration files. I owe [@rlbaker] a beer for all
 the help he's given me by walking me through his configs. I'm including
 instructions for setting this up both for anyone who's curious as well as
 myself the next time I have to set things up from scratch! As you can guess
@@ -97,6 +97,7 @@ Install using `pip`:
 pip install virtualfish
 ```
 
+[@rlbaker]: https://github.com/rlbaker
 [fish]: https://fishshell.com
 [Git]: https://git-scm.com
 [Homebrew]: https://brew.sh
