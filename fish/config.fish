@@ -41,14 +41,18 @@ set fish_pager_color_progress    black --background=brwhite;
 set fish_color_selection         black --background=brwhite;
 
 # General environment variables
-set -g -x EDITOR nvim
+set -gx EDITOR nvim
+
+# Golang config
+set -gx GOPATH /Users/zsommers/projects/golang
+set -gx PATH $PATH $GOPATH/bin
 
 # Python environment variables
-set -g -x PYTHONDONTWRITEBYTECODE True
+set -gx PYTHONDONTWRITEBYTECODE True
 
 # Virtual Fish - must run AFTER all PATH changes
-set -g -x VIRTUALFISH_COMPAT_ALIASES True
-set -g -x PROJECT_HOME /Users/zsommers/projects/python
+set -gx VIRTUALFISH_COMPAT_ALIASES True
+set -gx PROJECT_HOME /Users/zsommers/projects/python
 eval (/usr/local/bin/python3 -m virtualfish compat_aliases projects global_requirements environment)
 
 # Print Apple logo
