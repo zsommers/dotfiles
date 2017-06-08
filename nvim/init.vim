@@ -19,20 +19,39 @@ Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/deoplete.nvim'
-
 Plug 'neomake/neomake'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'dag/vim-fish'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'zchee/deoplete-jedi'
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries',
+                     \ 'for': 'go' }
+Plug 'nsf/gocode', { 'rtp': 'nvim',
+                   \ 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh',
+                   \ 'for': 'go' }
+Plug 'zchee/deoplete-go', { 'do': 'make',
+                          \ 'for': 'go' }
+
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern',
+                                 \ 'for': 'javascript' }
+Plug 'othree/jspc.vim', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown' }
 
 call plug#end()
 
@@ -49,7 +68,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_user_command = ['.git', 'cd %s; and git ls-files . --cached --other --exclude-standard']
 
 " NERDTree Config
-map <C-n> :NERDTreeToggle<CR>
+map \n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store']
 
@@ -67,9 +86,28 @@ let g:SuperTabCrMapping = 1
 " Deoplete Config
 let g:deoplete#enable_at_startup = 1
 
+" Neomake Config
+let g:neomake_open_list = 2
+
 " Python Config
 let g:neomake_python_enabled_makers = ['mypy', 'pylama']
 autocmd! BufWritePost,BufEnter *.py Neomake
+
+" Golang Config
+let g:neomake_go_enabled_makers = ['go', 'govet']
+autocmd! BufWritePost,BufEnter *.go Neomake
+
+" JavaScript Config
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+" Run `npm install -g eslint_d`
+let g:neomake_javascript_eslint_exe = '/usr/local/bin/eslint_d'
+let g:neomake_javascript_flow_exe = './node_modules/.bin/flow'
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+autocmd! BufWritePost,BufEnter *.js* Neomake
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+let g:javascript_plugin_flow = 1
 
 " Emmet Config
 autocmd FileType html,css,htmldjango,eelixir EmmetInstall
@@ -78,7 +116,7 @@ let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = '<C-T>'
 
 " Vim Markdown Preview Config
-let vim_markdown_preview_toggle=2
+let vim_markdown_preview_toggle=1
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 
