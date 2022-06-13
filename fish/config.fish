@@ -1,59 +1,49 @@
-# Git Prompt Config
-set __fish_git_prompt_show_informative_status "true"
-set __fish_git_prompt_showcolorhints          "true"
-set __fish_git_prompt_showdirtystate          "true"
-set __fish_git_prompt_showuntrackedfiles      "true"
-set __fish_git_prompt_showupstream            "informative"
-
-set __fish_git_prompt_char_upstream_prefix    " "
-set __fish_git_prompt_char_stateseparator     " "
-
-set __fish_git_prompt_color_branch            brmagenta
-set __fish_git_prompt_color_upstream          brblue
-set __fish_git_prompt_color_dirtystate        brred
-set __fish_git_prompt_color_cleanstate        brgreen
-set __fish_git_prompt_color_untrackedfiles    bryellow
-
-# Fish Syntax Highlighting Config
-set fish_color_normal            brwhite;
-set fish_color_command           brgreen;
-set fish_color_error             brred;
-set fish_color_comment           white;
-set fish_color_autosuggestion    brblack;
-set fish_color_quote             bryellow;
-set fish_color_end               brgreen;
-set fish_color_escape            brmagenta;
-set fish_color_operator          brmagenta;
-set fish_color_redirection       brcyan;
-set fish_color_param             brblue;
-set fish_color_valid_path        --underline;
-set fish_color_user              bryellow;
-set fish_color_host              brblue;
-set fish_color_cwd               brgreen;
-set fish_color_cwd_root          brred;
-set fish_color_history_current   brgreen;
-set fish_color_match             brcyan;
-set fish_color_search_match      --background=blue;
-set fish_pager_color_prefix      brgreen --underline;
-set fish_pager_color_completion  brwhite;
-set fish_pager_color_description white;
-set fish_pager_color_progress    black --background=brwhite;
-set fish_color_selection         black --background=brwhite;
+# Bob the Fish theme
+set -g theme_color_scheme gruvbox
+set -g theme_display_date no
+set -g theme_display_git_untracked yes
+set -g theme_display_hg no
+set -g theme_display_nvm no
+set -g theme_display_virtualenv yes
+set -g theme_nerd_fonts yes
+set -g theme_powerline_fonts yes
+set -g theme_title_use_abbreviated_path yes
+set -g theme_use_abbreviated_branch_name yes
+# set -g theme_git_worktree_support yes
 
 # General environment variables
 set -gx EDITOR nvim
+set -gx PATH $PATH /usr/local/sbin
+
+# Bat
+set -gx BAT_THEME "gruvbox"
 
 # Golang config
-set -gx GOPATH /Users/zsommers/projects/golang
-set -gx PATH $PATH $GOPATH/bin
+set -gx GOPATH /Users/zachsommers/projects/golang
+set -gx GOBIN $GOPATH/bin
+set -gx PATH $PATH $GOBIN
 
 # Python environment variables
 set -gx PYTHONDONTWRITEBYTECODE True
+set -gx PATH $PATH /Users/zachsommers/.local/bin
+# Pyenv
+status is-login; and pyenv init --path | source
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
 
-# Virtual Fish - must run AFTER all PATH changes
-set -gx VIRTUALFISH_COMPAT_ALIASES True
-set -gx PROJECT_HOME /Users/zsommers/projects/python
-eval (/usr/local/bin/python3 -m virtualfish compat_aliases projects global_requirements environment)
+# Ruby
+source /usr/local/share/chruby/chruby.fish
+source /usr/local/share/chruby/auto.fish
+set -gx PATH $PATH /Users/zachsommers/.gem/ruby/2.3.0/bin
 
-# Print Apple logo
-archey
+# Rust
+set -gx PATH $PATH $HOME/.cargo/bin
+
+# Haskell
+set -gx PATH $PATH $HOME/.ghcup/bin
+
+# Ad Hoc
+set -gx PATH $PATH ~/projects/operations/bin
+
+# Direnv
+direnv hook fish | source

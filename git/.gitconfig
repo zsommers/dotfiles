@@ -1,10 +1,10 @@
 [user]
-    email = github@zachsommers.com
     name = Zach Sommers
-    signingkey = C3B072A21A5F9A16
+    email = zach.sommers@adhocteam.us
 
 [core]
-    excludesfile = /Users/zsommers/.gitignore_global
+    excludesfile = /Users/zachsommers/.gitignore_global
+    pager = delta --syntax-theme='gruvbox'
 
 [alias]
     fp= fetch --prune
@@ -17,15 +17,27 @@
     cob = checkout -b
     cot = checkout -t
     br = branch
+    pu = push -u
+    df = diff
+    ds = diff --staged
     dt = difftool
+    dts = difftool --staged
     dtc = difftool --cached
+    wa = worktree add
+    wab = worktree add -b
+    wl = worktree list
+    wm = worktree move
+    wr = worktree remove
+
+[interactive]
+    diffFilter = delta --color-only
 
 [merge]
     ff = only
     conflictstyle = diff3
 
 [commit]
-    gpgSign = true
+    # gpgSign = true
 
 [push]
     default = simple
@@ -37,6 +49,10 @@
 [transfer]
     fsckobjects = true
 
+[alias]
+    showtool = "!f() { git difftool $1^ $1; }; f"
+    added = difftool --cached
+
 [diff]
     tool = icdiff
 
@@ -45,3 +61,16 @@
 
 [difftool "icdiff"]
     cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[pager]
+    difftool = true
+
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[pull]
+	ff = only
