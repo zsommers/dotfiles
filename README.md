@@ -3,7 +3,7 @@ This is a collection of my configuration files for setting up a new MacOS machin
 Please clone this repo with the following commands:
 ```bash
 mkdir ~/projects
-git clone git@github.com:zsommers/dotfiles.git ~/projects/
+git clone git@github.com:zsommers/dotfiles.git ~/projects/dotfiles
 ```
 
 ---
