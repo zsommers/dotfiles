@@ -1,0 +1,14 @@
+shell = "/opt/homebrew/bin/fish"
+
+[window]
+dimensions = { columns = 200, lines = 60 }
+
+[font]
+normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+size = 15
+
+[keyboard]
+bindings = [
+{ key = "ArrowRight", mods = "Command", action = "SelectNextTab" },
+{ key = "ArrowLeft", mods = "Command", action = "SelectPreviousTab" },
+]

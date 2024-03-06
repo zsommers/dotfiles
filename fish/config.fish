@@ -16,25 +16,26 @@ set -gx EDITOR nvim
 set -gx PATH $PATH /usr/local/sbin
 
 # Bat
-set -gx BAT_THEME "gruvbox"
+set -gx BAT_THEME "gruvbox-dark"
 
 # Golang config
 set -gx GOPATH /Users/zachsommers/projects/golang
 set -gx GOBIN $GOPATH/bin
 set -gx PATH $PATH $GOBIN
+source ~/.asdf/plugins/golang/set-env.fish
 
 # Python environment variables
 set -gx PYTHONDONTWRITEBYTECODE True
 set -gx PATH $PATH /Users/zachsommers/.local/bin
 # Pyenv
-status is-login; and pyenv init --path | source
-status --is-interactive; and pyenv init - | source
-status --is-interactive; and pyenv virtualenv-init - | source
+# status is-login; and pyenv init --path | source
+# status --is-interactive; and pyenv init - | source
+# status --is-interactive; and pyenv virtualenv-init - | source
 
 # Ruby
-source /usr/local/share/chruby/chruby.fish
-source /usr/local/share/chruby/auto.fish
-set -gx PATH $PATH /Users/zachsommers/.gem/ruby/2.3.0/bin
+# source /usr/local/share/chruby/chruby.fish
+# source /usr/local/share/chruby/auto.fish
+# set -gx PATH $PATH /Users/zachsommers/.gem/ruby/2.3.0/bin
 
 # Rust
 set -gx PATH $PATH $HOME/.cargo/bin
@@ -42,8 +43,8 @@ set -gx PATH $PATH $HOME/.cargo/bin
 # Haskell
 set -gx PATH $PATH $HOME/.ghcup/bin
 
-# Ad Hoc
-set -gx PATH $PATH ~/projects/operations/bin
-
 # Direnv
 direnv hook fish | source
+
+# asdf
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
