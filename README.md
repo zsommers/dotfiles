@@ -1,19 +1,70 @@
 # Dotfiles
-This is a collection of my configuration files. I owe [@rlbaker] a beer for all
-the help he's given me by walking me through his configs. I'm including
-instructions for setting this up both for anyone who's curious as well as
-myself the next time I have to set things up from scratch! As you can guess
-from the many references to [Homebrew], this is for [macOS].
+This is a collection of my configuration files for setting up a new MacOS machine.
+Please clone this repo with the following commands:
+```bash
+mkdir ~/projects
+git clone git@github.com:zsommers/dotfiles.git ~/projects/
+```
 
 ---
 
 ### Homebrew
 Install [Homebrew] by doing this:
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Then install dependencies:
+```bash
+~/projects/dotfiles/homebrew/install.sh
+```
+
+Make sure to update the held key setting for VS Code:
+```bash
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+```
+
+You can replace the list of installs as well:
+```bash
+~/projects/dotfiles/homebrew/install.sh
 ```
 
 ---
+
+### fish
+Link to the repo configs:
+```bash
+ln -s <path to repo>/fish/config.fish ~/.config/fish/
+ln -s <path to repo>/fish/functions ~/.config/fish/
+```
+Then change the default shell:
+```bash
+# You may need to add fish to the list of approved shells
+echo `which fish` >> /etc/shells
+chsh fish
+```
+If you don't have [virtualfish], there will probably be some errors. See below
+for [virtualfish] instructions.
+
+---
+
+### Git
+Symlink the repo configs:
+```bash
+ln -s <path to repo>/git/.gitconfig ~/
+ln -s <path to repo>/git/.gitignore_global ~/
+```
+
+---
+
+### asdf
+TODO: Document or script installing plugins
+
+Symlink the global versions:
+```bash
+ln -s ~/projects/dotfiles/asdf/.tool-versions ~/
+```
+
+## OUTDATED
 
 ### Neovim
 First install [neovim](https://github.com/neovim/neovim) with [Homebrew]:
@@ -35,40 +86,6 @@ Lastly, reload the config and install the plugs with `nvim`:
 :PlugInstall
 ```
 Find more commands [here](https://github.com/junegunn/vim-plug#commands)
-
----
-
-### fish
-Install [fish] with [Homebrew]:
-```bash
-brew install fish
-```
-Link to the repo configs:
-```bash
-ln -s <path to repo>/fish/config.fish ~/.config/fish/
-ln -s <path to repo>/fish/functions ~/.config/fish/
-```
-Then change the default shell:
-```bash
-# You may need to add fish to the list of approved shells
-echo `which fish` >> /etc/shells
-chsh fish
-```
-If you don't have [virtualfish], there will probably be some errors. See below
-for [virtualfish] instructions.
-
----
-
-### Git
-Install current [Git] with [Homebrew]:
-```bash
-brew install git
-```
-Then symlink the repo configs:
-```bash
-ln -s <path to repo>/git/.gitconfig ~/
-ln -s <path to repo>/git/.gitignore_global ~/
-```
 
 ---
 
